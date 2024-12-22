@@ -2,20 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Embla */
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.embla {
+  @apply w-full;
+  --slide-height: 19rem;
+  --slide-spacing: 1rem;
+  --slide-size: 100%;
+}
+.embla__viewport {
+  @apply overflow-hidden;
+}
+.embla__container {
+  @apply w-full flex gap-4 max-h-[240px];
+  backface-visibility: hidden;
+  touch-action: pan-y;
+}
+.embla__slide {
+  flex: 0 0 var(--slide-size);
+}
+.embla__button {
+  @apply rounded-full bg-white/80 shadow w-7 h-7 flex justify-center items-center z-10 active:scale-95;
+}
+.embla__button:disabled {
+  @apply bg-transparent;
+}
+.embla__button__svg {
+  @apply w-5 h-5;
+}
+.embla__dot {
+  @apply w-4 rounded-full inline-flex active:scale-95;
+  appearance: none;
+  touch-action: manipulation;
+}
+.embla__dot:after {
+  @apply w-2 h-2 rounded-full flex items-center m-auto bg-white/50;
+  content: "";
+}
+.embla__dot--selected:after {
+  @apply bg-white shadow;
 }
