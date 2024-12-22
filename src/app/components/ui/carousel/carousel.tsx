@@ -17,7 +17,7 @@ export default function Carousel({ options, slides }: PropType) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
 
   const onNavButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
-    const autoplay: any = emblaApi?.plugins()?.autoplay;
+    const autoplay = emblaApi?.plugins()?.autoplay;
     if (!autoplay) return;
 
     const resetOrStop =
